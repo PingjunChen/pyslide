@@ -2,4 +2,4 @@
 
 import os, sys
 
-from .sample import *
+from ._sample import *

@@ -3,3 +3,9 @@
 pyslide
 ========
 Digital pathology whole slide image analysis toolbox
+
+
+## Installation
+```
+pip install pyslide
+```

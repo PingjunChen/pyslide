@@ -6,6 +6,7 @@
 
 
 ## *Installation*
+To install pyslide, simple use pip:
 ```
-pip install pyslide
+$ pip install pyslide
 ```

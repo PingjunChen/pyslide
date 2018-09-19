@@ -1,4 +1,4 @@
-# **pyslide - Digital pathology whole slide image analysis toolbox**	
+# **pyslide - Whole slide image analysis toolbox**	
 
 ![pyslide-banner](./docs/wsi-thyroid-fs-slide.png)	
 

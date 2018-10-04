@@ -13,8 +13,6 @@ The documentation for `pyslide <https://github.com/PingjunChen/pyslide>`_ is mai
   :caption: User Documentation
 
   patch
-  image
-  metric
 
 .. _about-docs:
 

@@ -13,5 +13,6 @@ import patch
 
 def test_wsi_patch_splitting():
     print("Hello Patch")
+    coors_arr = patch.wsi_patch_splitting(wsi_w=2048, wsi_h=1536, length=224)
 
     assert 1 == 1, "Patch Testing is passed"

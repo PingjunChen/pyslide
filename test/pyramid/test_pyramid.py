@@ -9,9 +9,11 @@ TEST_PATH = opa(opd(opd(__file__)))
 PRJ_PATH = opd(TEST_PATH)
 sys.path.insert(0, opj(PRJ_PATH, "pyslide"))
 
-import io
+import pyramid
 
 def test_create_pyramidal_img():
-    print("Hello IO")
+    img_path = os.path.join(PRJ_PATH, "data", "Images", "CropBreastSlide.tif")
+    save_dir = os.path.join(PRJ_PATH, "data", "Slides")
 
+    pyramid.create_pyramidal_img(img_path, save_dir)
     assert 1 == 1, "IO Testing is passed"

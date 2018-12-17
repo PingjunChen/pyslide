@@ -19,9 +19,6 @@ build/
 dist/
 *.egg-info/
 
-# ReadTheDocs documentation
-docs/
-
 # Jupyter Notebook
 .ipynb_checkpoints
 

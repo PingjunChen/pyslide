@@ -13,11 +13,12 @@ The documentation for `pyslide <https://github.com/PingjunChen/pyslide>`_ is mai
   :caption: User Documentation
 
   patch
+  pyramid
 
 .. _about-docs:
 
 .. toctree::
    :maxdepth: 2
-   :caption: About
+   :caption: About pyslide
 
    about

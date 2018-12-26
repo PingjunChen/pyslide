@@ -1,0 +1,3 @@
+[submodule "tissueloc"]
+	path = tissueloc
+	url = https://github.com/PingjunChen/tissueloc.git

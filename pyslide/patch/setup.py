@@ -15,7 +15,7 @@ if __name__ == '__main__':
     from numpy.distutils.core import setup
     setup(maintainer='Pingjun Chen',
           maintainer_email='chenpingjun@gmx.com',
-          description='Patch utility in whole slide image',
+          description='Patch utility in whole slide image analysis',
           url='https://github.com/PingjunChen/pyslide',
           license='Apache',
           **(configuration(top_path='').todict())

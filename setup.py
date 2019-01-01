@@ -6,7 +6,7 @@ import pyslide
 
 PKG_NAME = "pyslide"
 VERSION = pyslide.__version__
-DESCRIPTION = "Digital pathology whole slide image analysis toolbox."
+DESCRIPTION = "Whole slide image analysis toolbox."
 HOMEPAGE = "https://github.com/PingjunChen/pyslide"
 LICENSE = "Apache"
 AUTHOR_NAME = "Pingjun Chen"

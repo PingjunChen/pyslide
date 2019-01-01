@@ -16,7 +16,7 @@ if __name__ == '__main__':
     from numpy.distutils.core import setup
     setup(maintainer='Pingjun Chen',
           maintainer_email='chenpingjun@gmx.com',
-          description='Whole slide image IO',
+          description='File format utilities of whole slide image',
           url='https://github.com/PingjunChen/pyslide',
           license='Apache',
           **(configuration(top_path='').todict())

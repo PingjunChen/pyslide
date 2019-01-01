@@ -5,6 +5,7 @@ import math, itertools
 
 __all__ = ['wsi_patch_splitting',]
 
+
 def wsi_patch_splitting(wsi_w, wsi_h, length, overlay=True):
     '''Spltting whole slide image to be patch-wise.
     '''

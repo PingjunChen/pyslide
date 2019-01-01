@@ -1,1 +1,3 @@
 numpy==1.12.1
+tissueloc==1.4.0
+pycontour==1.1.0

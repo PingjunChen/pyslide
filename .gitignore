@@ -1,5 +1,8 @@
 # Folders
 data/
+.vscode/
+.pytest_cache/
+__pycache__/
 
 # File extensions
 .DS_Store
@@ -7,21 +10,8 @@ data/
 *.log
 *.pyc
 
-# virtualenv
-.venv
-
-# Byte-compiled / optimized / DLL files
-.vscode/
-__pycache__/
 
 # Distribution / packaging
 build/
 dist/
 *.egg-info/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-
-# Pytest
-.pytest_cache/

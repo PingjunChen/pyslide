@@ -9,7 +9,5 @@ before_install:
     - pip install -r requirements.txt
     - pip install -U pytest
         
-# install:
-
 script:
   - python pyslide/hello.py

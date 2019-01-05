@@ -1,10 +1,8 @@
 import os, sys
 from tifffile import imsave
 
-
 sys.path.insert(0, '.')
 from kfb_io.io_image import patch_read_slide
-
 
 def walk_dir(data_dir, file_types):
     path_list = []
@@ -17,15 +15,14 @@ def walk_dir(data_dir, file_types):
     return path_list
 
 
-
 if __name__ == "__main__":
 	input_root = ""
 	save_root = ""
 
-if not os.path.exists(save_root):
-    os.makedirs(save_root)
-
+    if not os.path.exists(save_root):
+        os.makedirs(save_root)
 	kfb_files = walk_dir(input_root, ['.kfb'])
+
 
 	for this_kfb_path in kfb_files:
 	    img_name = os.path.basename(this_kfb_path)
@@ -33,5 +30,4 @@ if not os.path.exists(save_root):
 
 	    this_raw_data = patch_read_slide(this_kfb_path)
 	    save_path = os.path.join(save_root, img_name_noext+'.tif')
-	    imsave(save_path, this_raw_data, compress="lzma", bigtiff=True)    
-	    # imsave(save_path, this_raw_data, compress=6, bigtiff=True)
+	    imsave(save_path, this_raw_data, compress=8, bigtiff=True)

@@ -6,7 +6,7 @@ import math, itertools
 __all__ = ['wsi_patch_splitting',]
 
 
-def wsi_patch_splitting(wsi_w, wsi_h, length, overlay=True):
+def wsi_patch_splitting(wsi_h, wsi_w, length, overlay=True):
     '''Spltting whole slide image to be patch-wise.
     '''
     coors_arr = []
@@ -41,14 +41,16 @@ def wsi_patch_splitting(wsi_w, wsi_h, length, overlay=True):
         return p_sets
 
     if overlay == True:
-        w_sets = split_patch_overlay(wsi_w, length)
         h_sets = split_patch_overlay(wsi_h, length)
+        w_sets = split_patch_overlay(wsi_w, length)
     else:
-        w_sets = split_patch_no_overlay(wsi_w, length)
         h_sets = split_patch_no_overlay(wsi_h, length)
+        w_sets = split_patch_no_overlay(wsi_w, length)
 
     # combine points in both w and h direction
     if len(w_sets) > 0 and len(h_sets) > 0:
         coors_arr = list(itertools.product(w_sets, h_sets))
+    else:
+        raise Exception("Cannot splitting")
 
     return coors_arr

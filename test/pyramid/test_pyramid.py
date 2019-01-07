@@ -12,11 +12,13 @@ sys.path.insert(0, PRJ_PATH)
 
 from pyslide import pyramid
 
+
 def test_create_pyramidal_img():
     img_path = os.path.join(PRJ_PATH, "test/data/Images/CropBreastSlide.tif")
     save_dir = os.path.join(PRJ_PATH, "test/data/Slides")
-    pyramid.create_pyramidal_img(img_path, save_dir)
+    status = pyramid.create_pyramidal_img(img_path, save_dir)
     assert os.path.exists(os.path.join(save_dir, "CropBreastSlide.tiff"))
+    assert status == 0
 
 def test_load_wsi_head():
     wsi_img_path = os.path.join(PRJ_PATH, "test/data/Slides/CropBreastSlide.tiff")

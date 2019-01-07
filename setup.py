@@ -8,7 +8,7 @@ PKG_NAME = "pyslide"
 VERSION = pyslide.__version__
 DESCRIPTION = "Whole slide image analysis toolbox."
 HOMEPAGE = "https://github.com/PingjunChen/pyslide"
-LICENSE = "Apache"
+LICENSE = "MIT"
 AUTHOR_NAME = "Pingjun Chen"
 AUTHOR_EMAIL = "chenpingjun@gmx.com"
 

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-import math, itertools
+import numpy as np
+import itertools
 
 __all__ = ['wsi_patch_splitting',]
 
@@ -20,10 +21,10 @@ def wsi_patch_splitting(wsi_h, wsi_w, length, overlay=True):
             p_sets.append(0)
             return p_sets
 
-        p_num = int(math.ceil(ttl_len * 1.0 / sub_len))
+        p_num = int(np.ceil(ttl_len * 1.0 / sub_len))
         overlap_len = (p_num * sub_len - ttl_len) * 1.0 / (p_num - 1)
         extend_len = sub_len - overlap_len
-        for ind in range(p_num):
+        for ind in np.arange(p_num):
             p_sets.append(int(round(extend_len * ind)))
         return p_sets
 
@@ -36,8 +37,8 @@ def wsi_patch_splitting(wsi_h, wsi_w, length, overlay=True):
             p_sets.append(0)
             return p_sets
 
-        p_num = int(math.floor(ttl_len * 1.0 / sub_len))
-        p_sets = [ele*sub_len for ele in range(p_num)]
+        p_num = int(np.floor(ttl_len * 1.0 / sub_len))
+        p_sets = [ele*sub_len for ele in np.arange(p_num)]
         return p_sets
 
     if overlay == True:
@@ -52,5 +53,6 @@ def wsi_patch_splitting(wsi_h, wsi_w, length, overlay=True):
         coors_arr = list(itertools.product(w_sets, h_sets))
     else:
         raise Exception("Cannot splitting")
+
 
     return coors_arr

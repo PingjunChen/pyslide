@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os, sys, pdb
-
-BASE_PATH = os.path.abspath(os.path.dirname(__file__))
+import os, sys
 
 
 def configuration(parent_package='', top_path=None):
@@ -12,12 +10,13 @@ def configuration(parent_package='', top_path=None):
 
     return config
 
+
 if __name__ == '__main__':
     from numpy.distutils.core import setup
     setup(maintainer='Pingjun Chen',
           maintainer_email='chenpingjun@gmx.com',
           description='File format utilities of whole slide image',
           url='https://github.com/PingjunChen/pyslide',
-          license='Apache',
+          license='MIT',
           **(configuration(top_path='').todict())
           )

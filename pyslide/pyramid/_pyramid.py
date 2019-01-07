@@ -8,11 +8,12 @@ __all__ = ["create_pyramidal_img",
             "load_wsi_head",
             ]
 
+
 def create_pyramidal_img(img_path, save_dir):
     """ Convert normal image to pyramidal image.
 
     Parameters
-    ----------
+    -------
     img_path: str
         Whole slide image path (absolute path is needed)
     save_dir: str
@@ -35,6 +36,7 @@ def create_pyramidal_img(img_path, save_dir):
     >>> save_dir = os.path.join(PRJ_PATH, "test/data/Slides")
     >>> status = pyramid.create_pyramidal_img(img_path, save_dir)
     >>> assert status == 0
+
     """
 
     convert_cmd = "convert " + img_path
@@ -45,8 +47,20 @@ def create_pyramidal_img(img_path, save_dir):
 
     return status
 
+
 def load_wsi_head(wsi_img_path):
     """ Load the header meta data of whole slide pyramidal image.
+
+    Parameters
+    -------
+    wsi_img_path: str
+        The path to whole slide image
+
+    Returns
+    -------
+    wsi_header: slide class
+        Meta information of whole slide image
+
     """
 
     wsi_header = openslide.OpenSlide(wsi_img_path)

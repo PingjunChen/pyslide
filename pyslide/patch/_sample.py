@@ -109,7 +109,7 @@ def wsi_patch_splitting(wsi_path, patch_dir, patch_size=299, save_size=299,
     None
 
     """
-    
+
     if pyramid_flag == False:
         try:
             img = io.imread(wsi_path)

@@ -4,10 +4,11 @@ import os, sys
 import numpy as np
 import itertools
 
+
 __all__ = ['wsi_patch_splitting',]
 
 
-def wsi_patch_splitting(wsi_h, wsi_w, length, overlay=True):
+def wsi_patch_splitting(wsi_h, wsi_w, length, overlay_flag=True):
     '''Spltting whole slide image to be patch-wise.
     '''
     coors_arr = []
@@ -41,7 +42,7 @@ def wsi_patch_splitting(wsi_h, wsi_w, length, overlay=True):
         p_sets = [ele*sub_len for ele in np.arange(p_num)]
         return p_sets
 
-    if overlay == True:
+    if overlay_flag == True:
         h_sets = split_patch_overlay(wsi_h, length)
         w_sets = split_patch_overlay(wsi_w, length)
     else:

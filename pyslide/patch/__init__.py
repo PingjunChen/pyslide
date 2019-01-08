@@ -2,4 +2,5 @@
 
 import os, sys
 
+from ._prop import *
 from ._sample import *

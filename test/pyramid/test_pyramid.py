@@ -20,6 +20,7 @@ def test_create_pyramidal_img():
     assert os.path.exists(os.path.join(save_dir, "CropBreastSlide.tiff"))
     assert status == 0
 
+
 def test_load_wsi_head():
     wsi_img_path = os.path.join(PRJ_PATH, "test/data/Slides/CropBreastSlide.tiff")
     wsi_header = pyramid.load_wsi_head(wsi_img_path)

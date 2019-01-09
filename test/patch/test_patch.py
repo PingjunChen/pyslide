@@ -11,5 +11,6 @@ sys.path.insert(0, PRJ_PATH)
 
 from pyslide import patch
 
-def test_wsi_patch_splitting():
-    coors_arr = patch.wsi_patch_splitting(wsi_w=2048, wsi_h=1536, length=224)
+
+def test_wsi_coor_splitting():
+    coors_arr = patch.wsi_coor_splitting(wsi_h=1536, wsi_w=2048, length=224, overlap_flag=True)

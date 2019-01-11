@@ -6,7 +6,6 @@ __pycache__/
 
 # File extensions
 .DS_Store
-*.so
 *.log
 *.pyc
 

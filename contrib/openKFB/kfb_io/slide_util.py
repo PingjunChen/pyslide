@@ -15,8 +15,8 @@ from ..file_founder import FileFounderFactory
 from  .kfb_deepzoom import KfbDeepZoomGenerator
 from .io_image import read_slide_region
 
-class KfbSlideClass:
 
+class KfbSlideClass:
     @classmethod
     def open_slide(cls, slide_file_path):
         return kfbslide.open_kfbslide(slide_file_path)
@@ -24,15 +24,7 @@ class KfbSlideClass:
     @classmethod
     def get_deepzoom(cls, slide):
         return KfbDeepZoomGenerator(slide)
-    
-# class ImgSlideClass:
-#     @classmethod
-#     def open_slide(cls, slide_file_path):
-#         return kfbslide.open_kfbslide(slide_file_path)
 
-#     @classmethod
-#     def get_deepzoom(cls, slide):
-#         return KfbDeepZoomGenerator(slide)
 
 class OpenSlideClass:
     @classmethod
@@ -111,14 +103,14 @@ def get_slide_info():
                 ratio = 2**level
                 highest_SlideHeight, highest_SlideWidth = slide_img.shape[0:2]
                 SlideWidth,  SlideHeight = highest_SlideWidth//ratio,  highest_SlideHeight//ratio
-                img_type = 'image' 
+                img_type = 'image'
 
             except:
                 slide_img  = openslide.open_slide(slide_path)
                 SlideWidth,  SlideHeight = slide_img.level_dimensions[level]
                 highest_SlideWidth,  highest_SlideHeight = slide_img.level_dimensions[0]
                 ratio = slide_img.level_downsamples[level]
-                    
+
         else:
             slide_img  = openslide.open_slide(slide_path)
             SlideWidth,  SlideHeight = slide_img.level_dimensions[level]
@@ -144,7 +136,7 @@ class IOCLS__(object):
         file_name      = os.path.basename(self.file_path)
         self.file_ext  = os.path.splitext(file_name)[1]  #'.ext, .jpg'
         self.slide     = get_slide(idSlide)
-        
+
 
         rs, cs, re, ce = self.get_info(x_coords, y_coords)
         self.rs = rs
@@ -160,7 +152,7 @@ class IOCLS__(object):
         HEIGHT_SCALE = 1.0
         WIDTH_SCALE = 1.0
         TILE_SIZE = 256
-        
+
         slide_width, slide_height = self.slide.level_dimensions[0]
         if len(x_coords ) > 0 and len(y_coords)> 0:
             # Get sub image
@@ -171,7 +163,7 @@ class IOCLS__(object):
             # contour width and height
             contour_width = maxx_coor-minx_coor
             contour_height = maxy_coor-miny_coor
-            
+
             # get region min x and y coordinates: consider can less than 0
             region_minx_coor = int(centerx_coor - contour_width * WIDTH_SCALE / 2.0)
             region_minx_coor = region_minx_coor if region_minx_coor >= 0 else 0
@@ -186,7 +178,7 @@ class IOCLS__(object):
             rs, cs, re, ce = region_miny_coor, region_minx_coor, region_maxy_coor, region_maxx_coor
         else:
             rs,cs, re, ce = 0, 0, slide_height-256, slide_width-256
-        
+
         return rs, cs, re, ce
 
     def read_region(self, location=[0,0],  size=[256, 256],  level=0, use_grey=False):
@@ -203,11 +195,11 @@ class IOCLS(object):
         '''
         self.file_path = SlideManager.get_slide_local_path(idSlide)
         file_name      = os.path.basename(self.file_path)
-                    
+
         self.file_ext  = os.path.splitext(file_name)[1]  #'.ext, .jpg'
         self.slide     = get_slide(idSlide)
         self.naked_name = os.path.splitext(file_name)[0]  #'.ext, .jpg'
-        
+
         rs, cs, re, ce = self.get_info(x_coords, y_coords)
         self.rs = rs
         self.cs = cs
@@ -222,7 +214,7 @@ class IOCLS(object):
         HEIGHT_SCALE = 1.0
         WIDTH_SCALE = 1.0
         TILE_SIZE = 256
-        
+
         slide_width, slide_height = self.slide.level_dimensions[0]
         if len(x_coords ) > 0 and len(y_coords)> 0:
             # Get sub image
@@ -233,7 +225,7 @@ class IOCLS(object):
             # contour width and height
             contour_width = maxx_coor-minx_coor
             contour_height = maxy_coor-miny_coor
-            
+
             # get region min x and y coordinates: consider can less than 0
             region_minx_coor = int(centerx_coor - contour_width * WIDTH_SCALE / 2.0)
             region_minx_coor = region_minx_coor if region_minx_coor >= 0 else 0
@@ -248,7 +240,7 @@ class IOCLS(object):
             rs, cs, re, ce = region_miny_coor, region_minx_coor, region_maxy_coor, region_maxx_coor
         else:
             rs,cs, re, ce = 0, 0, slide_height-256, slide_width-256
-    
+
         return rs, cs, re, ce
 
     def read_region(self, location=[0,0],  size=[256, 256],  level=0, use_grey=False,  **kwargs):
@@ -259,7 +251,7 @@ class IOCLS(object):
 
         cur_patch  = self.slide.read_region(location=location,  size=true_size,  level=level)
         cur_patch  = np.asarray(cur_patch)
-        
+
         if use_grey:
             cur_patch =  0.2989*cur_patch[:,:,0] + 0.5870*cur_patch[:,:,1] + 0.1140*cur_patch[:,:,2]
             cur_patch = cur_patch[:,:,None]

@@ -25,3 +25,23 @@ def mean_patch_val(img):
     mean_val = np.mean(img)
 
     return mean_val
+
+
+def std_patch_val(img):
+    """ Standard deviation of pixel values in the patch.
+
+    Parameters
+    -------
+    img: np.array
+        Patch image
+
+    Returns
+    -------
+    std_val: float
+        Standard deviation of pixel values in the patch
+
+    """
+
+    std_val = np.std(img)
+
+    return std_val

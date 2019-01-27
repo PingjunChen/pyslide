@@ -1,4 +1,4 @@
-# **pyslide - Whole slide image analysis toolbox**
+# **pyslide - Python whole slide image analysis toolkit**
 [![Build status](https://travis-ci.org/PingjunChen/pyslide.svg?master)](https://travis-ci.org/PingjunChen)
 [![Documentation Status](https://readthedocs.org/projects/pyslide/badge/?version=latest)](https://pyslide.readthedocs.io/en/latest/?badge=latest)
 ![](https://img.shields.io/github/license/PingjunChen/pyslide.svg)
@@ -9,7 +9,7 @@
 ## *Installation*
 To install pyslide, simple use pip:
 ```
-$ pip install pyslide
+$ pip install pyslide==0.3.2
 ```
 
 ## Usage

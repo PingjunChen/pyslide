@@ -6,7 +6,7 @@ import pyslide
 
 PKG_NAME = "pyslide"
 VERSION = pyslide.__version__
-DESCRIPTION = "Whole slide image analysis toolbox."
+DESCRIPTION = "Python whole slide image analysis toolkit"
 HOMEPAGE = "https://github.com/PingjunChen/pyslide"
 LICENSE = "MIT"
 AUTHOR_NAME = "Pingjun Chen"
@@ -19,13 +19,12 @@ with open('requirements.txt') as f:
 CLASSIFIERS = [
     'Development Status :: 1 - Planning',
     'Intended Audience :: Developers',
+    'Intended Audience :: Healthcare Industry',    
     'Intended Audience :: Science/Research',
-    'License :: OSI Approved :: Apache Software License',
+    'License :: OSI Approved :: MIT License',
     'Programming Language :: Python',
-    'Programming Language :: Python :: 2',
-    'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.6',
     'Topic :: Scientific/Engineering',
 ]
 

@@ -1,16 +1,19 @@
 # Folders
-/test/data/
 .vscode/
 .pytest_cache/
 __pycache__/
+data/
 
 # File extensions
 .DS_Store
+*.py[cod]
+*$py.class
 *.log
-*.pyc
-
 
 # Distribution / packaging
 build/
 dist/
 *.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints

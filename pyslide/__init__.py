@@ -2,8 +2,6 @@
 
 import os, sys
 
-__all__ = ["PKG_DIR", "__version__"]
+__all__ = ["__version__", ]
 
-PKG_DIR = os.path.abspath(os.path.dirname(__file__))
-
-__version__ = '0.3.0'
+__version__ = '0.3.2'

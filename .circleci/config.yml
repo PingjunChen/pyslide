@@ -8,6 +8,8 @@ jobs:
 
         steps:
             - checkout
+            - run: sudo apt-get install build-essential checkinstall
+            - run: sudo apt-get build-dep imagemagick -y
             - run:
                 name: install dependencies
                 command: |

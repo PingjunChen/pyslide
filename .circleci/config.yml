@@ -9,7 +9,8 @@ jobs:
         steps:
             - checkout
             - run: sudo apt-get install build-essential checkinstall
-            - run: sudo apt-get install imagemagick 
+            - run: sudo apt-get install openslide-tools
+            - run: sudo apt-get install imagemagick
             - run:
                 name: install dependencies
                 command: |

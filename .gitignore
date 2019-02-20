@@ -2,7 +2,6 @@
 .vscode/
 .pytest_cache/
 __pycache__/
-data/
 
 # File extensions
 .DS_Store

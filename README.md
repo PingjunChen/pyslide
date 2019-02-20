@@ -1,5 +1,6 @@
 # **pyslide - Python whole slide image analysis toolkit**
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9fd878feda1d4780b8c101efda3422a4)](https://app.codacy.com/app/PingjunChen/pyslide?utm_source=github.com&utm_medium=referral&utm_content=PingjunChen/pyslide&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9fd878feda1d4780b8c101efda3422a4)](https://app.codacy.com/app/PingjunChen/pyslide?utm_source=github.com&utm_medium=referral&utm_content=PingjunChen/pyslide&utm_campaign=Badge_Grade_Dashboard)
 [![Build status](https://travis-ci.org/PingjunChen/pyslide.svg?master)](https://travis-ci.org/PingjunChen)
 [![Documentation Status](https://readthedocs.org/projects/pyslide/badge/?version=latest)](https://pyslide.readthedocs.io/en/latest/?badge=latest)
 ![](https://img.shields.io/github/license/PingjunChen/pyslide.svg)

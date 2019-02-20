@@ -22,7 +22,6 @@ Documentation
 ------------
 Hosted in [https://pyslide.readthedocs.io](https://pyslide.readthedocs.io), powered by [readthedocs](https://readthedocs.org) and [Sphinx](http://www.sphinx-doc.org).
 
-
 License
 ------------
 [pyslide](https://github.com/PingjunChen/pyslide) is free software made available under the MIT License. For details see the [LICENSE](LICENSE) file.

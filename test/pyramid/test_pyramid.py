@@ -17,8 +17,10 @@ def test_create_pyramidal_img():
     img_path = os.path.join(PRJ_PATH, "test/data/Images/CropBreastSlide.tif")
     save_dir = os.path.join(PRJ_PATH, "test/data/Slides")
     status = pyramid.create_pyramidal_img(img_path, save_dir)
-    assert os.path.exists(os.path.join(save_dir, "CropBreastSlide.tiff"))
-    assert status == 0
+    if not os.path.exists(os.path.join(save_dir, "CropBreastSlide.tiff")):
+        raise AssertionError("Pyramidal creation error")
+    if status != 0:
+        raise AssertionError("Pyramidal creation error")
 
 
 def test_load_wsi_head():

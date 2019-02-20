@@ -1,7 +1,7 @@
-#### Main author:
+#### Main author
 
-- [Pingjun Chen](https://github.com/PingjunChen)
+    - [Pingjun Chen](https://github.com/PingjunChen)
 
-#### Contributors (alphabetical last name):
+#### Contributors (alphabetical last name)
 
-- Lin Yang
+    - Lin Yang

@@ -3,4 +3,4 @@
 import os, sys
 
 from ._prop import *
-from ._sample import *
+from ._split import *

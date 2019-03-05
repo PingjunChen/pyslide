@@ -19,7 +19,7 @@ with open('requirements.txt') as f:
 CLASSIFIERS = [
     'Development Status :: 1 - Planning',
     'Intended Audience :: Developers',
-    'Intended Audience :: Healthcare Industry',    
+    'Intended Audience :: Healthcare Industry',
     'Intended Audience :: Science/Research',
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python',

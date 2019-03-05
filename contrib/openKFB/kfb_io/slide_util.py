@@ -1,6 +1,7 @@
 '''
 This module encapsulate operations about slide
 '''
+
 import os
 import numpy as np
 from threading import Lock
@@ -103,8 +104,6 @@ def get_slide_info():
                 ratio = 2**level
                 highest_SlideHeight, highest_SlideWidth = slide_img.shape[0:2]
                 SlideWidth,  SlideHeight = highest_SlideWidth//ratio,  highest_SlideHeight//ratio
-                img_type = 'image'
-
             except:
                 slide_img  = openslide.open_slide(slide_path)
                 SlideWidth,  SlideHeight = slide_img.level_dimensions[level]
@@ -148,7 +147,6 @@ class IOCLS__(object):
     #    self.slide.close()
 
     def get_info(self, x_coords=[], y_coords=[]):
-        SLIDE_LEVEL = 0
         HEIGHT_SCALE = 1.0
         WIDTH_SCALE = 1.0
         TILE_SIZE = 256

@@ -6,3 +6,4 @@
     - [x] Pull Requests
 
 ### Functionality
+    - Add more general tile splitting and fusing functionality

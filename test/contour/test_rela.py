@@ -21,6 +21,7 @@ def test_cnt_inside_wsi():
     if in_flag != True:
         raise AssertionError
 
+
 def test_intersect_cnt_wsi():
     wsi_h, wsi_w = 4, 5
     cnt1 = np.array([[1, 0, 0, 1, 3.9, 3],

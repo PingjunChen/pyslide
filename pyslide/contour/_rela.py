@@ -8,6 +8,7 @@ __all__ = ["cnt_inside_wsi",
            "cnt_inside_ratio",
            ]
 
+
 def cnt_inside_wsi(cnt_arr, wsi_h, wsi_w):
     """ Determine contour is fully inside whole slide image or not.
 

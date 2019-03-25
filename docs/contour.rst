@@ -48,3 +48,13 @@ def contour_patch_splitting_self_overlap(cnt_arr, patch_size=299, inside_ratio=0
     with overlapping among patches.
 
     """
+
+contour_patch_splitting_half_overlap
+--------
+::
+
+def contour_patch_splitting_half_overlap(cnt_arr, wsi_h, wsi_w,
+                                       patch_size=448, inside_ratio=0.75):
+    """ Splitting patches with half overlap between patches.
+
+    """

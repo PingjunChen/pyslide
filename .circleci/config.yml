@@ -11,6 +11,7 @@ jobs:
             - run: sudo apt-get install build-essential checkinstall
             - run: sudo apt-get install openslide-tools
             - run: sudo apt-get install imagemagick
+            - run: sudo apt-get install libgeos-dev
             - run:
                 name: install dependencies
                 command: |
@@ -25,8 +26,7 @@ jobs:
                 name: run tests
                 command: |
                     . venv/bin/activate
-                    cd test
-                    pytest .
+                    pytest test
 
             - store_artifacts:
                 path: test-reports

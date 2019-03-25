@@ -12,7 +12,9 @@ pyslide - Python whole slide image analysis toolkit
 ------------
 To install pyslide, simple use pip:
 ```alpha
-$ pip install pyslide==0.3.2
+sudo apt-get install libgeos-dev
+pip install -r requirements.txt
+pip install pyslide==0.3.2
 ```
 
 Usage

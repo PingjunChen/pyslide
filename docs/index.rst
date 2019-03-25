@@ -12,6 +12,7 @@ The documentation for `pyslide <https://github.com/PingjunChen/pyslide>`_ is mai
   :maxdepth: 2
   :caption: User Documentation
 
+  contour
   patch
   pyramid
 

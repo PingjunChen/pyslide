@@ -26,6 +26,5 @@ def test_contour_patch_splitting_self_overlap():
                         [160, 4800, 4800, 160]])
     coors_arr = contour.contour_patch_splitting_self_overlap(cnt_arr, patch_size=299,
                                                            inside_ratio=0.75)
-    import pdb; pdb.set_trace()
     if len(coors_arr) == 0:
         raise AssertionError

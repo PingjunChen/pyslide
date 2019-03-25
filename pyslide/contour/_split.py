@@ -169,7 +169,6 @@ def contour_patch_splitting_half_overlap(cnt_arr, wsi_h, wsi_w,
     if end_h > wsi_h - patch_size:
         end_h -= patch_size
     end_w = (1 + int(np.floor((cnt_max_w - start_w  - 1.0) / half_patch_size))) * half_patch_size + start_w
-    import pdb; pdb.set_trace()
     if end_w > wsi_w - patch_size:
         end_w -= patch_size
 

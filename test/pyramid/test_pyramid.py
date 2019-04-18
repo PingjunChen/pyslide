@@ -13,14 +13,13 @@ sys.path.insert(0, PRJ_PATH)
 from pyslide import pyramid
 
 
-def test_create_pyramidal_img():
-    img_path = os.path.join(PRJ_PATH, "test/data/Images/CropBreastSlide.tif")
-    save_dir = os.path.join(PRJ_PATH, "test/data/Slides")
-    status = pyramid.create_pyramidal_img(img_path, save_dir)
-    if not os.path.exists(os.path.join(save_dir, "CropBreastSlide.tiff")):
-        raise AssertionError("Pyramidal creation error")
-    if status != 0:
-        raise AssertionError("Pyramidal creation error")
+# def test_create_pyramidal_img():
+#     save_dir = os.path.join(PRJ_PATH, "test/data/Slides")
+#     status = pyramid.create_pyramidal_img(img_path, save_dir)
+#     if not os.path.exists(os.path.join(save_dir, "CropBreastSlide.tiff")):
+#         raise AssertionError("Pyramidal creation error")
+#     if status != 0:
+#         raise AssertionError("Pyramidal creation error")
 
 
 def test_load_wsi_head():

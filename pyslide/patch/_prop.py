@@ -4,7 +4,8 @@ import os, sys
 import numpy as np
 from skimage import color
 
-__all__ = ['mean_patch_val', ]
+__all__ = ['mean_patch_val',
+           'patch_bk_ratio']
 
 
 def mean_patch_val(img):
@@ -47,26 +48,26 @@ def std_patch_val(img):
     return std_val
 
 
-def patch_bg_ratio(img, bg_thresh=0.72):
+def patch_bk_ratio(img, bk_thresh=0.80):
     """ Calculate the ratio of background in the image
 
     Parameters
     -------
     img: np.array
         patch image
-    bg_thresh: float
+    bk_thresh: float
         background threshold value
 
     Returns
     -------
-    bg_ratio: float
+    bk_ratio: float
         the ratio of background in a patch
 
     """
 
     g_img = color.rgb2gray(img)
-    bg_num = (g_img > bg_thresh).sum()
+    bk_num = (g_img > bk_thresh).sum()
     pixel_num = g_img.shape[0] * g_img.shape[1]
-    bg_ratio = bg_num * 1.0 / pixel_num
+    bk_ratio = bk_num * 1.0 / pixel_num
 
-    return bg_ratio
+    return bk_ratio

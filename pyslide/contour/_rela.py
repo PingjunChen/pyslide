@@ -120,7 +120,9 @@ def cnt_inside_ratio(cnt_arr1, cnt_arr2):
     for ind in np.arange(num_point2):
         point_list2.append((cnt_arr2[1][ind], cnt_arr2[0][ind]))
     cnt_poly1 = geometry.Polygon(point_list1)
+    cnt_poly1 = cnt_poly1.convex_hull
     cnt_poly2 = geometry.Polygon(point_list2)
+    cnt_poly2 = cnt_poly2.convex_hull
 
     inter_flag = cnt_poly1.intersects(cnt_poly2)
     if inter_flag == False:

@@ -38,3 +38,12 @@ def std_patch_val(img):
     """ Standard deviation of pixel values in the patch.
 
     """
+
+patch_bk_ratio
+--------
+::
+
+def patch_bk_ratio(img, bk_thresh=0.80):
+    """ Calculate the ratio of background in the image
+
+    """

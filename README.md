@@ -15,7 +15,7 @@ To install pyslide, simple use pip:
 sudo apt-get install openslide-tools
 sudo apt-get install libgeos-dev
 pip install -r requirements.txt
-pip install pyslide==0.3.3
+pip install pyslide==0.3.4
 ```
 
 Usage

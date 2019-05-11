@@ -72,8 +72,6 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
     # combine points in both w and h direction
     if len(w_sets) > 0 and len(h_sets) > 0:
         coors_arr = list(itertools.product(h_sets, w_sets))
-    else:
-        raise Exception("Cannot splitting")
 
     return coors_arr
 

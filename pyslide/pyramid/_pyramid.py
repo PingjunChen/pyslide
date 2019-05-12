@@ -48,14 +48,6 @@ def create_pyramidal_img(img_path, save_dir):
     return status
 
 
-def load_wsi_level_img(wsi_img_path, level=0):
-    """ Load the image from specified level of the whole slide image.
-
-    """
-
-    return None
-
-
 def load_wsi_head(wsi_img_path):
     """ Load the header meta data of whole slide pyramidal image.
 
@@ -75,3 +67,31 @@ def load_wsi_head(wsi_img_path):
     wsi_head = openslide.OpenSlide(wsi_img_path)
 
     return wsi_head
+
+
+def load_wsi_level_img(wsi_img_path, level=0):
+    """ Load the image from specified level of the whole slide image.
+
+    Parameters
+    -------
+    wsi_img_path: str
+        The path to whole slide image
+    level: int
+        Loading slide image level
+
+    Returns
+    -------
+    level_img: np.array
+        Whole slide numpy image in given specified level
+
+    """
+
+
+    wsi_head = load_wsi_head(wsi_img_path)
+    if level < 0 or level >= wsi_head.level_count:
+        raise AssertionError("level {} not availabel in {}".format(
+            level, os.path.basename(wsi_img_path)))
+    wsi_img = wsi_head.read_region((0, 0), level, wsi_head.level_dimensions[level])
+    wsi_img = np.asarray(wsi_img)[:,:,:3]
+
+    return wsi_img

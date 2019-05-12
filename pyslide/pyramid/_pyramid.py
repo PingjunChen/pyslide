@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-import openslide
+
 
 
 __all__ = ["create_pyramidal_img",
@@ -48,6 +48,14 @@ def create_pyramidal_img(img_path, save_dir):
     return status
 
 
+def load_wsi_level_img(wsi_img_path, level=0):
+    """ Load the image from specified level of the whole slide image.
+
+    """
+
+    return None
+
+
 def load_wsi_head(wsi_img_path):
     """ Load the header meta data of whole slide pyramidal image.
 
@@ -58,11 +66,12 @@ def load_wsi_head(wsi_img_path):
 
     Returns
     -------
-    wsi_header: slide class
+    wsi_head: slide metadata
         Meta information of whole slide image
 
     """
 
-    wsi_header = openslide.OpenSlide(wsi_img_path)
+    import openslide
+    wsi_head = openslide.OpenSlide(wsi_img_path)
 
-    return wsi_header
+    return wsi_head

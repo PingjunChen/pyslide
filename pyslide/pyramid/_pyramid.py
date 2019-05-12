@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-
+import numpy as np
 
 
 __all__ = ["create_pyramidal_img",
             "load_wsi_head",
+            "load_wsi_level_img",
             ]
-
 
 def create_pyramidal_img(img_path, save_dir):
     """ Convert normal image to pyramidal image.

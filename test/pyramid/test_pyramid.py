@@ -2,9 +2,10 @@
 
 import os, sys
 import numpy as np
+import matplotlib.pyplot as plt
+
 from os.path import dirname as opd
 from os.path import abspath as opa
-from os.path import join as opj
 
 TEST_PATH = opa(opd(opd(__file__)))
 PRJ_PATH = opd(TEST_PATH)
@@ -30,3 +31,10 @@ def test_load_wsi_head():
     level_num = wsi_header.level_count
     for ind in np.arange(level_num):
         print("level {:2d} size: {}".format(ind, wsi_header.level_dimensions[ind]))
+
+
+def test_load_wsi_level_img():
+    wsi_img_path = os.path.join(PRJ_PATH, "test/data/Slides/CropBreastSlide.tiff")
+    wsi_level_img = pyramid.load_wsi_level_img(wsi_img_path, level=3)
+    plt.imshow(wsi_level_img)
+    # plt.show()

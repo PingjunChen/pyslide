@@ -8,9 +8,11 @@ pyslide - Python whole slide image analysis toolkit
 
 ![pyslide-banner](./docs/wsi-thyroid-fs-slide.png)
 
-*Installation*
+Please `star` this repo if you find [pyslide](https://github.com/PingjunChen/pyslide) to be helpful for your work.
+
+Installation
 ------------
-To install pyslide, simple use pip:
+To install pyslide, apt dependences before pip:
 ```alpha
 sudo apt-get install openslide-tools
 sudo apt-get install libgeos-dev

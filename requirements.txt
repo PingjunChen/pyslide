@@ -1,5 +1,5 @@
 numpy==1.15.4
-pydaily==0.3.2
+pydaily==0.3.3
 Pillow==5.3.0
 openslide-python==1.1.1
 scikit-image==0.14.1

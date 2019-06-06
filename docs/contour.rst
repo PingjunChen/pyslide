@@ -1,6 +1,25 @@
 Contour
 ========
 
+contour_valid
+--------
+::
+
+def contour_valid(cnt_arr):
+    """ Check contour is valid or not.
+
+    """
+
+contour_to_poly_valid
+--------
+::
+
+
+def contour_to_poly_valid(cnt_arr):
+    """ Convert contour to poly valid if not poly valid
+
+    """
+
 cnt_inside_wsi
 --------
 ::

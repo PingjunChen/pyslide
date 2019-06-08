@@ -4,5 +4,5 @@ openslide-python==1.1.1
 scikit-image==0.14.1
 opencv-python==3.4.4.19
 shapely==1.6.4
-pydaily==0.3.3
-pycontour==1.3.7
+pydaily==0.4.0
+pycontour==1.4.0

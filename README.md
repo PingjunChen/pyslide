@@ -4,6 +4,7 @@ pyslide - Python whole slide image analysis toolkit
 [![CircleCI](https://circleci.com/gh/PingjunChen/pyslide.svg?style=svg)](https://circleci.com/gh/PingjunChen/pyslide)
 [![Documentation Status](https://readthedocs.org/projects/pyslide/badge/?version=latest)](https://pyslide.readthedocs.io/en/latest/?badge=latest)
 ![](https://img.shields.io/github/license/PingjunChen/pyslide.svg)
+[![codecov](https://codecov.io/gh/PingjunChen/pyslide/branch/master/graph/badge.svg)](https://codecov.io/gh/PingjunChen/pyslide)
 ![](https://img.shields.io/github/stars/PingjunChen/pyslide.svg)
 
 ![pyslide-banner](./docs/wsi-thyroid-fs-slide.png)

@@ -14,5 +14,9 @@ build/
 dist/
 *.egg-info/
 
+# coverage reports
+.coverage
+coverage.xml
+
 # Jupyter Notebook
 .ipynb_checkpoints

@@ -7,12 +7,12 @@ from skimage import io, transform
 import openslide
 
 
-__all__ = ['wsi_coor_splitting',
-           'wsi_stride_splitting']
+__all__ = ["wsi_coor_splitting",
+           "wsi_stride_splitting"]
 
 
 def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
-    ''' Spltting whole slide image to starting coordinates.
+    """ Spltting whole slide image to starting coordinates.
 
     Parameters
     -------
@@ -30,7 +30,7 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
     coors_arr: list
         list of starting coordinates of patches ([0]-h, [1]-w)
 
-    '''
+    """
 
     coors_arr = []
     # splitting in both w and h direction with overlap
@@ -97,7 +97,7 @@ def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
 
     """
 
-    coors_arr = None
+    coors_arr = []
     def stride_split(ttl_len, patch_len, stride_len):
         p_sets = []
         if patch_len > ttl_len:

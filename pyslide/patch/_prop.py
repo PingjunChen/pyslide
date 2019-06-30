@@ -4,8 +4,9 @@ import os, sys
 import numpy as np
 from skimage import color
 
-__all__ = ['mean_patch_val',
-           'patch_bk_ratio']
+__all__ = ["mean_patch_val",
+           "std_patch_val",
+           "patch_bk_ratio"]
 
 
 def mean_patch_val(img):

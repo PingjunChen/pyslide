@@ -8,7 +8,7 @@ import openslide
 
 
 __all__ = ['wsi_coor_splitting',
-           'wsi_patch_splitting']
+           'wsi_stride_splitting']
 
 
 def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
@@ -98,70 +98,3 @@ def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
     """
 
     pass
-
-
-
-def wsi_patch_splitting(wsi_path, patch_dir, patch_size=299, save_size=299,
-                        wsi_ext="tiff", save_ext="png",
-                        pyramid_flag=True, overlap_flag=True, level=0):
-    """ Spltting whole slide image to image patches.
-
-    Parameters
-    -------
-    wsi_path: str
-        path of the whole slide image
-    patch_dir: str
-        location to save the patch
-    patch_size: int
-        patch size to crop in whole slide image
-    save_size: int
-        the size of saved image patch
-    wsi_ext: str
-        file extension of whole slide image
-    save_ext: str
-        extension of saved image patch name
-    pyramid_flag: boolean
-        whole slide image is pyramid structure or not
-    overlap_flag: boolean
-        overlap between patches or not
-    level: int
-        whole slide image level to crop patch
-
-    Returns
-    -------
-    None
-
-    """
-
-    if pyramid_flag == False:
-        try:
-            img = io.imread(wsi_path)
-            if img.dtype == "uint16":
-                img = (img / 256.0).astype(np.uint8)
-            elif img.dtype == "uint8":
-                pass
-            else:
-                raise Exception("Unknow imge data type")
-        except:
-            print("Cannot handle {}".format(wsi_path))
-    else:
-        wsi_header = openslide.OpenSlide(wsi_path)
-        img = wsi_header.read_region(location=(0, 0), level=level,
-                                     size=wsi_header.level_dimensions[level])
-        img = np.asarray(img)[:,:,:-1]
-
-    coors_arr = wsi_coor_splitting(wsi_h=img.shape[0], wsi_w=img.shape[1],
-                                   length=patch_size, overlap_flag=overlap_flag)
-    filename = os.path.splitext(os.path.basename(wsi_path))[0]
-    for coor in coors_arr:
-        h_start, w_start = coor[0], coor[1]
-        cur_patch = img[h_start:h_start+patch_size, w_start:w_start+patch_size, :]
-        if patch_size != save_size:
-            save_patch = transform.resize(cur_patch, (save_size, save_size))
-            save_patch = (save_patch * 255.0).astype(np.uint8)
-        else:
-            save_patch = cur_patch
-
-        patch_name = "{}_{}.{}".format(filename, str(uuid.uuid4())[:8], save_ext)
-        patch_filepath = os.path.join(patch_dir, patch_name)
-        io.imsave(patch_filepath, save_patch)

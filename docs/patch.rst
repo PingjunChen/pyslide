@@ -10,16 +10,6 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
 
     """
 
-wsi_patch_splitting
---------
-::
-
-def wsi_patch_splitting(wsi_path, patch_dir, patch_size=299, save_size=299,
-                        wsi_ext="tiff", save_ext="png",
-                        pyramid_flag=True, overlap_flag=True, level=0):
-    """ Spltting whole slide image to image patches.
-
-    """
 
 mean_patch_val
 --------

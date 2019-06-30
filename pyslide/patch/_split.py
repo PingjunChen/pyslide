@@ -97,4 +97,26 @@ def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
 
     """
 
-    pass
+    coors_arr = None
+    def stride_split(ttl_len, patch_len, stride_len):
+        p_sets = []
+        if patch_len > ttl_len:
+            raise AssertionError("patch length larger than total length")
+        elif patch_len == ttl_len:
+            p_sets.append(0)
+        else:
+            stride_num = int(np.ceil((ttl_len - patch_len) * 1.0 / stride_len))
+            for ind in np.range(stride_num+1):
+                cur_pos = int((ttl_len - patch_len) * 1.0 / stride_num) * ind)
+                p_sets.append(cur_pos)
+
+        return p_sets
+
+    h_sets = stride_split(wsi_h, patch_len, stride_len)
+    w_sets = stride_split(wsi_w, patch_len, stride_len)
+
+    # combine points in both w and h direction
+    if len(w_sets) > 0 and len(h_sets) > 0:
+        coors_arr = list(itertools.product(h_sets, w_sets))
+
+    return coors_arr

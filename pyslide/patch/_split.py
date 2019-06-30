@@ -76,6 +76,31 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
     return coors_arr
 
 
+def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
+    """ Spltting whole slide image to patches by stride.
+
+    Parameters
+    -------
+    wsi_h: int
+        height of whole slide image
+    wsi_w: int
+        width of whole slide image
+    patch_len: int
+        length of the patch image
+    stride_len: int
+        length of the stride
+
+    Returns
+    -------
+    coors_arr: list
+        list of starting coordinates of patches ([0]-h, [1]-w)
+
+    """
+
+    pass
+
+
+
 def wsi_patch_splitting(wsi_path, patch_dir, patch_size=299, save_size=299,
                         wsi_ext="tiff", save_ext="png",
                         pyramid_flag=True, overlap_flag=True, level=0):

@@ -13,3 +13,7 @@ from pyslide import patch
 
 def test_wsi_coor_splitting():
     coors_arr = patch.wsi_coor_splitting(wsi_h=1536, wsi_w=2048, length=224, overlap_flag=True)
+
+
+def test_wsi_stride_splitting():
+    coors_arr = patch.wsi_stride_splitting(wsi_h=234, wsi_w=240, patch_len=224, stride_len=8)

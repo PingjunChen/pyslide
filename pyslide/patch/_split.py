@@ -106,8 +106,8 @@ def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
             p_sets.append(0)
         else:
             stride_num = int(np.ceil((ttl_len - patch_len) * 1.0 / stride_len))
-            for ind in np.range(stride_num+1):
-                cur_pos = int((ttl_len - patch_len) * 1.0 / stride_num) * ind)
+            for ind in range(stride_num+1):
+                cur_pos = int(((ttl_len - patch_len) * 1.0 / stride_num) * ind)
                 p_sets.append(cur_pos)
 
         return p_sets

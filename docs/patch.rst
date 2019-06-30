@@ -10,6 +10,16 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
 
     """
 
+    
+wsi_stride_splitting
+--------
+::
+
+def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
+    """ Spltting whole slide image to patches by stride.
+
+    """
+
 
 mean_patch_val
 --------

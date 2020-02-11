@@ -8,7 +8,7 @@ pyslide - Python whole slide image analysis toolkit
 [![Downloads](https://pepy.tech/badge/pyslide)](https://pepy.tech/project/pyslide)
 ![](https://img.shields.io/github/stars/PingjunChen/pyslide.svg)
 
-![pyslide-banner](./docs/wsi-thyroid-fs-slide.png)
+![pyslide-banner](./docs/thyroid_diag.png)
 
 Please consider `star` this repo if you find [pyslide](https://github.com/PingjunChen/pyslide) to be helpful for your work.
 

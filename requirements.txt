@@ -6,3 +6,4 @@ Pillow==7.0.0
 opencv-python==4.1.2.30
 scikit-image==0.14.2
 shapely==1.6.4
+openslide-python==1.1.1

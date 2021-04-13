@@ -2,7 +2,7 @@ pydaily>=0.4.3
 pycontour>=1.4.0
 numpy>=1.20.0
 scikit-image>=0.18.0
-Pillow==8.1.1
+Pillow>=8.1.1
 shapely>=1.6.4
-openslide-python==1.1.2
+openslide-python>=1.1.2
 setuptools>=50.0.0

@@ -1,10 +1,10 @@
 numpy>=1.16.2
-pydaily==0.4.2
-pycontour==1.4.0
-scikit-image==0.14.2
+pydaily>=0.4.3
+pycontour>=1.4.0
+scikit-image>=0.14.2
 Pillow==8.1.1
-opencv-python==4.1.2.30
-scikit-image==0.14.2
+opencv-python>=4.1.2.30
+scikit-image>=0.14.2
 shapely>=1.6.4
 openslide-python==1.1.2
 setuptools>=50.0.0

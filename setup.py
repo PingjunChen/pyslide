@@ -3,7 +3,7 @@ import os, sys, pdb
 from setuptools import setup, find_packages
 
 PKG_NAME = "pyslide"
-VERSION = "0.4.4"
+VERSION = "0.4.5"
 DESCRIPTION = "Python whole slide image analysis toolkit"
 HOMEPAGE = "https://github.com/PingjunChen/pyslide"
 LICENSE = "MIT"

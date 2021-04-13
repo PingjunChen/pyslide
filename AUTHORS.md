@@ -4,4 +4,4 @@
 
 #### Contributors (alphabetical last name)
 
-    - Lin Yang
+    - [Sarthak Pati](https://github.com/sarthakpati)

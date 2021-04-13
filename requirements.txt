@@ -1,4 +1,4 @@
-numpy==1.16.2
+numpy>=1.16.2
 pydaily==0.4.2
 pycontour==1.4.0
 scikit-image==0.14.2

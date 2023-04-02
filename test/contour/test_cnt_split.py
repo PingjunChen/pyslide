@@ -16,9 +16,9 @@ def test_contour_patch_splitting_no_overlap():
     cnt_arr = np.array([[160, 160, 4800, 4800],
                         [160, 4800, 4800, 160]])
     coors_arr = contour.contour_patch_splitting_no_overlap(cnt_arr, wsi_h, wsi_w,
-                                                           patch_size=299, inside_ratio=0.75)
-    if len(coors_arr) == 0:
-        raise AssertionError
+                                                       patch_size=299, inside_ratio=0.75)
+    assert len(coors_arr) > 0, "Coordinate array is empty."
+
 
 
 def test_contour_patch_splitting_self_overlap():
@@ -26,8 +26,8 @@ def test_contour_patch_splitting_self_overlap():
                         [160, 4800, 4800, 160]])
     coors_arr = contour.contour_patch_splitting_self_overlap(cnt_arr, patch_size=299,
                                                            inside_ratio=0.75)
-    if len(coors_arr) == 0:
-        raise AssertionError
+    assert len(coors_arr) > 0, "Coordinate array is empty."
+
 
 
 def test_contour_patch_splitting_half_overlap():
@@ -36,5 +36,5 @@ def test_contour_patch_splitting_half_overlap():
                         [160, 4751, 4751, 160]])
     coors_arr = contour.contour_patch_splitting_half_overlap(cnt_arr, wsi_h, wsi_w,
                                                              patch_size=448, inside_ratio=0.01)
-    if len(coors_arr) == 0:
-        raise AssertionError
+    assert len(coors_arr) > 0, "Coordinate array is empty."
+

@@ -12,28 +12,29 @@ __all__ = ["wsi_coor_splitting",
 
 
 def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
-    """ Spltting whole slide image to starting coordinates.
+    """ Splitting whole slide image into starting coordinates.
 
     Parameters
-    -------
-    wsi_h: int
-        height of whole slide image
-    wsi_w: int
-        width of whole slide image
-    length: int
-        length of the patch image
-    overlap_flag: boolean
-        patch with overlap or not
+    ----------
+    wsi_h : int
+        Height of whole slide image.
+    wsi_w : int
+        Width of whole slide image.
+    length : int
+        Length of the patch image.
+    overlap_flag : bool
+        Patch with overlap or not.
 
     Returns
     -------
-    coors_arr: list
-        list of starting coordinates of patches ([0]-h, [1]-w)
+    coors_arr : list
+        List of starting coordinates of patches ([0]-h, [1]-w).
 
     """
 
     coors_arr = []
-    # splitting in both w and h direction with overlap
+    
+    # Function to split patch with overlap
     def split_patch_overlap(ttl_len, sub_len):
         p_sets = []
         if ttl_len < sub_len:
@@ -49,7 +50,7 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
             p_sets.append(int(round(extend_len * ind)))
         return p_sets
 
-    # splitting in both w and h direction with overlap
+    # Function to split patch without overlap
     def split_patch_no_overlap(ttl_len, sub_len):
         p_sets = []
         if ttl_len < sub_len:
@@ -69,15 +70,15 @@ def wsi_coor_splitting(wsi_h, wsi_w, length, overlap_flag=True):
         h_sets = split_patch_no_overlap(wsi_h, length)
         w_sets = split_patch_no_overlap(wsi_w, length)
 
-    # combine points in both w and h direction
+    # Combine points in both w and h direction
     if len(w_sets) > 0 and len(h_sets) > 0:
-        coors_arr = list(itertools.product(h_sets, w_sets))
+        coors_arr = [(h, w) for h in h_sets for w in w_sets]
 
     return coors_arr
 
 
 def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
-    """ Spltting whole slide image to patches by stride.
+    """ Split whole slide image to patches with a certain stride.
 
     Parameters
     -------
@@ -95,13 +96,19 @@ def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
     coors_arr: list
         list of starting coordinates of patches ([0]-h, [1]-w)
 
+    Raises
+    ------
+    AssertionError
+        If patch length is greater than total length.
+
     """
 
     coors_arr = []
+    
     def stride_split(ttl_len, patch_len, stride_len):
         p_sets = []
         if patch_len > ttl_len:
-            raise AssertionError("patch length larger than total length")
+            raise AssertionError("Patch length larger than total length.")
         elif patch_len == ttl_len:
             p_sets.append(0)
         else:
@@ -109,7 +116,6 @@ def wsi_stride_splitting(wsi_h, wsi_w, patch_len, stride_len):
             for ind in range(stride_num+1):
                 cur_pos = int(((ttl_len - patch_len) * 1.0 / stride_num) * ind)
                 p_sets.append(cur_pos)
-
         return p_sets
 
     h_sets = stride_split(wsi_h, patch_len, stride_len)

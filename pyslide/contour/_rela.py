@@ -1,84 +1,77 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 from shapely import geometry
 
-__all__ = ["cnt_inside_wsi",
-           "intersect_cnt_wsi",
-           "cnt_inside_ratio",
-           ]
+from typing import Tuple
 
 
-def cnt_inside_wsi(cnt_arr, wsi_h, wsi_w):
-    """ Determine contour is fully inside whole slide image or not.
+__all__ = ["cnt_inside_wsi", "intersect_cnt_wsi", "cnt_inside_ratio"]
+
+
+def construct_polygon_from_points(point_list: np.ndarray) -> geometry.Polygon:
+    """Constructs a Shapely polygon object from a numpy array of points."""
+    x, y = point_list[0], point_list[1]
+    point_tuples = list(zip(y, x))  # Need to reverse order of x, y to match Shapely convention
+    return geometry.Polygon(point_tuples)
+
+
+def cnt_inside_wsi(cnt_arr: np.ndarray, wsi_h: int, wsi_w: int) -> bool:
+    """Determine if a contour is fully inside a whole slide image or not.
 
     Parameters
-    -------
-    cnt_arr: np.array
-        contour with standard numpy 2d array format
-    wsi_h: int
-        height of whole slide image
-    wsi_w: int
-        width of whole slide image
+    ----------
+    cnt_arr : np.ndarray
+        Contour with standard numpy 2d array format
+    wsi_h : int
+        Height of whole slide image
+    wsi_w : int
+        Width of whole slide image
 
     Returns
     -------
-    in_flag: bool
-        in_flag to be true if contour is fully inside whole slide image,
-        else false
-
+    in_flag : bool
+        True if contour is fully inside whole slide image, else False
     """
 
-    # construct whole slide image polygon, in whole slide image, we need to avoid
-    # contour on the maximum width and height line, thus substract a small value
+    # Construct whole slide image polygon. In whole slide image, we need to avoid
+    # contour on the maximum width and height line, thus subtract a small value.
     wsi_poly = geometry.box(0, 0, wsi_w - 0.001, wsi_h - 0.001)
-    # construct contour polygon
-    point_list = []
-    num_point = cnt_arr.shape[1]
-    for ind in np.arange(num_point):
-        # need to change h-w to w-h
-        point_list.append((cnt_arr[1][ind], cnt_arr[0][ind]))
-    cnt_poly = geometry.Polygon(point_list)
+    
+    # Construct contour polygon
+    cnt_poly = construct_polygon_from_points(cnt_arr)
 
     in_flag = wsi_poly.contains(cnt_poly)
 
     return in_flag
 
 
-def intersect_cnt_wsi(cnt_arr, wsi_h, wsi_w):
-    """ Cutting out the contour part inside the whole slide image.
+def intersect_cnt_wsi(cnt_arr: np.ndarray, wsi_h: int, wsi_w: int) -> np.ndarray:
+    """Cut out the contour part inside the whole slide image.
 
     Parameters
-    -------
-    cnt_arr: np.array
-        contour with standard numpy 2d array format
-    wsi_h: int
-        height of whole slide image
-    wsi_w: int
-        width of whole slide image
+    ----------
+    cnt_arr : np.ndarray
+        Contour with standard numpy 2d array format
+    wsi_h : int
+        Height of whole slide image
+    wsi_w : int
+        Width of whole slide image
 
     Returns
     -------
-    inter_cnt: np.array
-        contour intersected with whole slide image
-
+    inter_cnt : np.ndarray
+        Contour intersected with whole slide image
     """
 
-    if cnt_inside_wsi(cnt_arr, wsi_h, wsi_w) == True:
+    if cnt_inside_wsi(cnt_arr, wsi_h, wsi_w):
         inter_cnt = cnt_arr.astype(np.uint32)
     else:
-        # we remove the last line in both width and height of contour
+        # We remove the last line in both width and height of contour
         wsi_poly = geometry.box(0, 0, wsi_w - 1, wsi_h - 1)
+        
+        # Construct contour polygon
+        cnt_poly = construct_polygon_from_points(cnt_arr)
 
-        # construct contour polygon
-        point_list = []
-        num_point = cnt_arr.shape[1]
-        for ind in np.arange(num_point):
-            # need to change h-w to w-h
-            point_list.append((cnt_arr[1][ind], cnt_arr[0][ind]))
-        cnt_poly = geometry.Polygon(point_list)
-
-        # get the intersection part of two polygon
+        # Get the intersection part of two polygons
         inter_poly = wsi_poly.intersection(cnt_poly)
 
         x_coors, y_coors = inter_poly.exterior.coords.xy
@@ -92,42 +85,32 @@ def intersect_cnt_wsi(cnt_arr, wsi_h, wsi_w):
     return inter_cnt
 
 
-def cnt_inside_ratio(cnt_arr1, cnt_arr2):
-    """ Calculate the ratio between intersection part of cnt_arr1 and cnt_arr2
-    to cnt_arr1.
+def cnt_inside_ratio(cnt_arr1: np.ndarray, cnt_arr2: np.ndarray) -> float:
+    """Calculate the ratio between intersection part of cnt_arr1 and cnt_arr2 to cnt_arr1.
 
     Parameters
-    -------
-    cnt_arr1: np.array
-        contour with standard numpy 2d array format
-    cnt_arr2: np.array
-        contour with standard numpy 2d array format
+    ----------
+    cnt_arr1 : np.ndarray
+        Contour with standard numpy 2d array format
+    cnt_arr2 : np.ndarray
+        Contour with standard numpy 2d array format
 
     Returns
     -------
-    ratio: float
-        intersection ratio of cnt_arr1
-
+    ratio : float
+        Intersection ratio of cnt_arr1
     """
 
-    # construct contour polygon
-    point_list1, point_list2 = [], []
-    num_point1 = cnt_arr1.shape[1]
-    num_point2 = cnt_arr2.shape[1]
-    # need to change h-w to w-h
-    for ind in np.arange(num_point1):
-        point_list1.append((cnt_arr1[1][ind], cnt_arr1[0][ind]))
-    for ind in np.arange(num_point2):
-        point_list2.append((cnt_arr2[1][ind], cnt_arr2[0][ind]))
-    cnt_poly1 = geometry.Polygon(point_list1)
-    cnt_poly1 = cnt_poly1.convex_hull
-    cnt_poly2 = geometry.Polygon(point_list2)
-    cnt_poly2 = cnt_poly2.convex_hull
+    # Construct contour polygons
+    cnt_poly1 = construct_polygon_from_points(cnt_arr1)
+    cnt_poly2 = construct_polygon_from_points(cnt_arr2)
 
+    # Check if the polygons intersect
     inter_flag = cnt_poly1.intersects(cnt_poly2)
-    if inter_flag == False:
+    if not inter_flag:
         ratio = 0.0
     else:
+        # Calculate the intersection area and ratio
         inter_poly = cnt_poly1.intersection(cnt_poly2)
         inter_area = inter_poly.area
         cnt1_area = cnt_poly1.area

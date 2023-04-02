@@ -14,9 +14,7 @@ from pyslide import contour
 
 def test_contour_valid():
     cnt_arr1 = np.array([(0, 2, 2, 0), (0, 0, 2, 2)])
-    if contour.contour_valid(cnt_arr1) != True:
-        raise AssertionError
+    assert contour.contour_valid(cnt_arr1), "Contour array 1 is not valid."
 
     cnt_arr2 = np.array([(1, 3, 1, 3), (1, 3, 2, 2)])
-    if contour.contour_valid(cnt_arr2) != False:
-        raise AssertionError
+    assert not contour.contour_valid(cnt_arr2), "Contour array 2 should not be valid."

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
+import os
+import sys
 import numpy as np
 from skimage import color
 
@@ -10,65 +11,54 @@ __all__ = ["mean_patch_val",
 
 
 def mean_patch_val(img):
-    """ Mean pixel value of the patch.
+    """Calculate the mean pixel value of the patch.
 
     Parameters
-    -------
-    img: np.array
-        Patch image
+    ----------
+    img : np.ndarray
+        Patch image.
 
     Returns
     -------
-    mean_val: float
-        Mean pixel value of the patch
-
+    float
+        Mean pixel value of the patch.
     """
-
-    mean_val = np.mean(img)
-
-    return mean_val
+    return img.mean()
 
 
 def std_patch_val(img):
-    """ Standard deviation of pixel values in the patch.
+    """Calculate the standard deviation of pixel values in the patch.
 
     Parameters
-    -------
-    img: np.array
-        Patch image
+    ----------
+    img : np.ndarray
+        Patch image.
 
     Returns
     -------
-    std_val: float
-        Standard deviation of pixel values in the patch
-
+    float
+        Standard deviation of pixel values in the patch.
     """
-
-    std_val = np.std(img)
-
-    return std_val
+    return img.std()
 
 
 def patch_bk_ratio(img, bk_thresh=0.80):
-    """ Calculate the ratio of background in the image
+    """Calculate the ratio of background in the image.
 
     Parameters
-    -------
-    img: np.array
-        patch image
-    bk_thresh: float
-        background threshold value
+    ----------
+    img : np.ndarray
+        Patch image.
+    bk_thresh : float, optional
+        Background threshold value, by default 0.80.
 
     Returns
     -------
-    bk_ratio: float
-        the ratio of background in a patch
-
+    float
+        Ratio of background in the patch.
     """
-
     g_img = color.rgb2gray(img)
-    bk_num = (g_img > bk_thresh).sum()
-    pixel_num = g_img.shape[0] * g_img.shape[1]
-    bk_ratio = bk_num * 1.0 / pixel_num
-
-    return bk_ratio
+    bk_pixel_num = np.sum(g_img > bk_thresh)
+    pixel_num = g_img.size
+    background_ratio = bk_pixel_num / pixel_num
+    return background_ratio

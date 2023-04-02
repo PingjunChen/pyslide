@@ -25,7 +25,9 @@ from pyslide import pyramid
 
 def test_load_wsi_head():
     wsi_img_path = os.path.join(PRJ_PATH, "test/data/Slides/CropBreastSlide.tiff")
-    wsi_header = pyramid.load_wsi_head(wsi_img_path)
+    with open(wsi_img_path, 'r') as f:
+        wsi_header = pyramid.load_wsi_head(f)
+
 
     print("WSI level dimension info:")
     level_num = wsi_header.level_count

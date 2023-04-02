@@ -18,4 +18,4 @@ def test_patch_bk_ratio():
 
     bk_ratio = patch.patch_bk_ratio(img, bk_thresh=0.80)
     if bk_ratio > 1 or bk_ratio < 0:
-        raise AssertionError("Ratio not in the range.")
+        raise ValueError("Background ratio not in the expected range of 0 to 1.")

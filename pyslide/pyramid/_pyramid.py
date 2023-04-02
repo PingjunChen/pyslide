@@ -40,7 +40,7 @@ def create_pyramidal_img(img_path, save_dir):
     """
 
     convert_cmd = "convert " + img_path
-    convert_option = " -compress jpeg -quality 90 -define tiff:tile-geometry=256x256 ptif:"
+    convert_option = " -compress lzw -quality 90 -define tiff:tile-geometry=256x256 ptif:"
     img_name = os.path.basename(img_path)
     convert_dst = os.path.join(save_dir, os.path.splitext(img_name)[0] + ".tiff")
     status = os.system(convert_cmd + convert_option + convert_dst)
@@ -92,6 +92,6 @@ def load_wsi_level_img(wsi_img_path, level=0):
         raise AssertionError("level {} not availabel in {}".format(
             level, os.path.basename(wsi_img_path)))
     wsi_img = wsi_head.read_region((0, 0), level, wsi_head.level_dimensions[level])
-    wsi_img = np.asarray(wsi_img)[:,:,:3]
+    wsi_img = np.array(wsi_img)[:,:,:3]
 
     return wsi_img

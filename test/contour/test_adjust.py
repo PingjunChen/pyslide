@@ -14,10 +14,8 @@ from pyslide import contour
 def test_contour_to_poly_valid():
     cnt_arr1 = np.array([(0, 2, 2, 0), (0, 0, 2, 2)])
     valid_arr1 = contour.contour_to_poly_valid(cnt_arr1)
-    if np.array_equal(cnt_arr1, valid_arr1) != True:
-        raise AssertionError
+    assert np.array_equal(cnt_arr1, valid_arr1), "Contour arrays not equal."
 
     cnt_arr2 = np.array([(1, 3, 1, 3), (1, 3, 2, 2)])
     valid_arr2 = contour.contour_to_poly_valid(cnt_arr2)
-    if np.array_equal(cnt_arr2, valid_arr2) != False:
-        raise AssertionError
+    assert not np.array_equal(cnt_arr2, valid_arr2), "Contour arrays should not be equal."
